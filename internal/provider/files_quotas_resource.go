@@ -5,7 +5,6 @@ import (
 	"terraform-provider-qumulo/internal/resource_files_quotas"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 var _ resource.Resource = (*filesQuotasResource)(nil)
@@ -16,10 +15,6 @@ func NewFilesQuotasResource() resource.Resource {
 
 type filesQuotasResource struct{}
 
-type filesQuotasResourceModel struct {
-	Id types.String `tfsdk:"id"`
-}
-
 func (r *filesQuotasResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_files_quotas"
 }
@@ -29,7 +24,7 @@ func (r *filesQuotasResource) Schema(ctx context.Context, req resource.SchemaReq
 }
 
 func (r *filesQuotasResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data filesQuotasResourceModel
+	var data resource_files_quotas.FilesQuotasModel
 
 	// Read Terraform plan data into the model
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
@@ -40,15 +35,12 @@ func (r *filesQuotasResource) Create(ctx context.Context, req resource.CreateReq
 
 	// Create API call logic
 
-	// Example data value setting
-	data.Id = types.StringValue("example-id")
-
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
 func (r *filesQuotasResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data filesQuotasResourceModel
+	var data resource_files_quotas.FilesQuotasModel
 
 	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
@@ -64,7 +56,7 @@ func (r *filesQuotasResource) Read(ctx context.Context, req resource.ReadRequest
 }
 
 func (r *filesQuotasResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data filesQuotasResourceModel
+	var data resource_files_quotas.FilesQuotasModel
 
 	// Read Terraform plan data into the model
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
@@ -80,7 +72,7 @@ func (r *filesQuotasResource) Update(ctx context.Context, req resource.UpdateReq
 }
 
 func (r *filesQuotasResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data filesQuotasResourceModel
+	var data resource_files_quotas.FilesQuotasModel
 
 	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
