@@ -1,0 +1,29 @@
+{
+	"provider": {
+		"name": "qumulo"
+	},
+	"resources": [
+		{
+			"name": "files_quotas",
+			"schema": {
+				"attributes": [
+					{
+						"name": "id",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "Unique ID of this directory."
+						}
+					},
+					{
+						"name": "limit",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "Limit in bytes of the cumulative size of this directory and its descendants."
+						}
+					}
+				]
+			}
+		}
+	],
+	"version": "0.1"
+}

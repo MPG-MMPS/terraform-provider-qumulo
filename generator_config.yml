@@ -1,0 +1,16 @@
+provider:
+  name: qumulo
+resources:
+  files_quotas:
+    create:
+      method: POST
+      path: /v1/files/quotas/
+    read:
+      method: GET
+      path: /v1/files/quotas/{id}
+    update:
+      method: PUT
+      path: /v1/files/quotas/{id}
+    delete:
+      method: DELETE
+      path: /v1/files/quotas/{id}
