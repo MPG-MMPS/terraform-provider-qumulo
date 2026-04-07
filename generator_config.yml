@@ -15,7 +15,7 @@ resources:
       method: DELETE
       path: /v1/files/quotas/{id}
 data_sources:
-  thing:
+  files_quotas:
     read:
       path: /v1/files/quotas/
       method: GET
